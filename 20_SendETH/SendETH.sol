@@ -46,7 +46,14 @@ contract SendETH {
     function call(address payable to, uint256 value) public {
        (bool success, ) = to.call{ value: value }("");
        if (!success) {
-        revert CallFailed();
+            revert CallFailed();
+       }
+    }
+
+    function call2(address payable to, uint256 value) public payable  {
+       (bool success, ) = to.call{ value: value }("");
+       if (!success) {
+            revert CallFailed();
        }
     }
 
